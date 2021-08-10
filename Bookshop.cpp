@@ -1,6 +1,8 @@
-#include <bits/stdc++.h>
+#include <bits/stdc++.h>          //it includes all header files
 using namespace std;
 
+
+//creating a class named bookshop
 class bookshop{
 public:
     void controlMethods();
@@ -12,6 +14,8 @@ public:
 
 };
 
+
+//to display what are the functions are there in this program
 void bookshop::controlMethods(){
     //system("cls");
     cout<<"\n\n\t\tCONTROL METHODS";
@@ -23,12 +27,17 @@ void bookshop::controlMethods(){
     cout<<"\n6. EXIT"<<"\n";
 }
 
+
+//declaring addBook function
 void bookshop::addBook(){
-    //system("cls");
-    //cin.ignore();
-    fstream file;
+    //system("cls");   //it's optional, which is used to clear the terminal.
+    //cin.ignore();  //if you use cin.getline() instead of cin>>, you have to put this to perfectly get the input from user.
+    
+    fstream file;      //it is a class to read and write from/to files
+    
     int numBooks;
     string bookID,bookName,authorName;
+    
     cout<<"\n\n\t\tADD BOOKS";
     cout<<"\n\nBOOK ID: ";
     cin>>bookID;
@@ -38,22 +47,25 @@ void bookshop::addBook(){
     cin>>authorName;
     cout<<"\nNO OF BOOKS: ";
     cin>>numBooks;
-    file.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec.txt",ios::out|ios::app);
+    
+    file.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec.txt",ios::out|ios::app);  //ios::out is to open the file in output mode(to feed datas to the file)...ios::app is to open the file in append means that it add data to the file not overwriting.
+    
     file << bookID << "\t\t"
-         << bookName << "\t\t" << authorName
+         << bookName << "\t\t" << authorName                        //using '<<' operator to give the datas to the file
          << "\t\t" << numBooks << "\n";
 
 }
 
 
-
+//function to display the available books with details
 void bookshop::displayBook(){
     //system("cls");
     fstream file;
+    
     int numBooks;
     string bookID,bookName,authorName;
 
-    file.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec.txt",ios::in);
+    file.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec.txt",ios::in);   //ios::in is to open the file in input mode(to access datas from the file)
     cout<<"\n\n\t\tBOOKS\n\n";
 
     if(!file){
@@ -64,7 +76,7 @@ void bookshop::displayBook(){
         file >> bookName;
         file >> authorName;
         file >> numBooks;
-        while(!file.eof()){
+        while(!file.eof()){                     //file.eof() eof means EndOfFile.This loop will check until datas in the file exits
 
             cout<<"Book ID: "<<bookID<<"\n\n";
             cout<<"Book Name: "<<bookName<<"\n\n";
@@ -73,8 +85,8 @@ void bookshop::displayBook(){
             cout<<"------------------------------------------------------\n\n";
 
             file >> bookID ;
-            //cout<<"\t\t";
-            file >> bookName;
+            //cout<<"\t\t";         
+            file >> bookName;                         //using '>>' operator to access data from the file
             //cout<<"\t\t";
             file >> authorName;
             //cout<<"\t\t";
@@ -82,13 +94,15 @@ void bookshop::displayBook(){
             //cout<<"\t\t";
         }
 
-        //system("pause");
+        //system("pause");        //optional,which is used to create a pause command
         file.close();
     }
 
 
 }
 
+
+//function to check a Book whether it is in that store or not
 void bookshop::checkBook(){
     fstream file;
     //cin.ignore();
@@ -96,9 +110,7 @@ void bookshop::checkBook(){
     int numBooks,count=0;
     string bookID,bookName,authorName;
     file.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec.txt",ios::in);
-    //file.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec.txt",ios::out|ios::app);
-    
-
+  
 
     cout<<"\n\n\t\tCHECK USER BOOK\n\n";
 
@@ -148,10 +160,12 @@ void bookshop::checkBook(){
     }
 }
 
+
+//function to update the details of a book
 void bookshop::updateBook(){
     fstream file,file1;
-    file.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec.txt",ios::in);
-    file1.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec1.txt",ios::out|ios::app);
+    file.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec.txt",ios::in);           //to access the datas from the current file and later it will be deleted
+    file1.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec1.txt",ios::out|ios::app);      //to store the updated book details and later it will be renamed
 
 
     int numBooks,count=0;
@@ -217,6 +231,8 @@ void bookshop::updateBook(){
 
 }
 
+
+//to delete a book
 void bookshop::delBook(){
     fstream file,file1;
     file.open("/home/ishwarya/cmp589/cppProjects/bookShop/bookrec.txt",ios::in);
@@ -244,8 +260,8 @@ void bookshop::delBook(){
 
 
         while(!file.eof()){
-            if(userBookId == bookID){
-                cout<<"\n\n\t\tDELETING...\n\n";
+            if(userBookId == bookID){                  //when the loop come inside this condition,that current book details cannot be added to the updated file(file2),thus it will be deleted
+                cout<<"\n\n\t\tDELETING...\n\n";            
                 cout<<"Successfully Deleted!\n";
                 count++;
 
