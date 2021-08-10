@@ -26,12 +26,16 @@ The Program Contains following functions in the system:
           
 *Update Book:*
 
-          Update book function is to update the books details.This function contains two files.One is to access the current details of the books and the another one is to add updated details of the books.Later the current file(file1) will be deleted and the updated file(file2) will be renamed as file1.
+          Update book function is to update the books details.This function contains two files.
+          One is to access the current details of the books and the another one is to add updated details of the books.
+          Later the current file(file1) will be deleted and the updated file(file2) will be renamed as file1.
 
 
 *Delete Book:*
 
-          Delete Book function is to delete a particular book details.This function also contains two files(one is to access and another one is updated(by deleting the particular book).Later file1 will be deleted and the file2 will be renamed as file1.
+          Delete Book function is to delete a particular book details.
+          This function also contains two files(one is to access and another one is updated(by deleting the particular book).
+          Later file1 will be deleted and the file2 will be renamed as file1.
 
 
 *References:*
